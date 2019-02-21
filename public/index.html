@@ -4,14 +4,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>connex-intro-webpack</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>favicon-32x32.png">
+    <title>Develop VeChain APPs with Connex</title>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but connex-intro-webpack doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Yes</h2>
+        </section>
+        <section>
+          <h2>It is</h2>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+                      ## 还有最后一个知识点
+                      
+                      <br/>
+                      ``` javascript
+                      const signingService = connex.vendor.sign('tx')
+                      signingService
+                        .signer(userAddress) // 强制用户地址来签名
+                        .comment(`Pay 100,000 VET to buy a ticket`)
+                      ```
+                      <br />
+                      + 仅做演示，实际并不安全
+                    </textarea>
+        </section>
+      </div>
+    </div>
+    <div id="app">
+    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>

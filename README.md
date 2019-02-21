@@ -1,4 +1,4 @@
-# connex-intro-webpack
+# connex-intro
 
 ## Project setup
 ```
