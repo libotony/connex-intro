@@ -1,0 +1,16 @@
+[v-cloak] {
+    display: none;
+}
+
+.row-name,
+.row-value {
+    text-align: left
+}
+
+#mini-ticket .grid p {
+    font-size: 16px
+}
+
+#full-ticket .grid p {
+    font-size: 16px
+}

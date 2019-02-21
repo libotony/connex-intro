@@ -1,45 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>favicon-32x32.png">
-    <title>Develop VeChain APPs with Connex</title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but connex-intro-webpack doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div class="reveal">
-      <div class="slides">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>favicon-32x32.png">
+  <title>Develop VeChain APPs with Connex</title>
+  <link rel="stylesheet" href="<%= BASE_URL %>css/hack.css">
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but connex-intro-webpack doesn't work properly without JavaScript enabled. Please enable it to
+      continue.</strong>
+  </noscript>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <div id="typed-strings">
+          <!-- enter custom text below here -->
+          <h1>Connex.js</h1>
+          <h2>Web3老用户带你致富</h2>
+          <h3>Web3带进门，Connex带你飞</h3>
+          <h3>致敬Web3，但是Web3一定不是最好的</h3>
+          <!-- enter custom text above here -->
+        </div>
+        <span id="typed"></span>
+      </section>
+      <section>
         <section>
-          <div id="typed-strings">
-            <!-- enter custom text below here -->
-            <h1>Connex.js</h1>
-            <h2>Web3老用户带你致富</h2>
-            <h3>Web3带进门，Connex带你飞</h3>
-            <h3>致敬Web3，但是Web3一定不是最好的</h3>
-            <!-- enter custom text above here -->
-          </div>
-          <span id="typed"></span>
+          <h2>Connex是什么</h2>
+          <h4 class="fragment fade-in">前端JavaScript库</h4>
+          <h4 class="fragment fade-in">唯链应用交互标准</h4>
+          <h4 class="fragment fade-in">三通:连通用户、应用、区块链</h4>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>什么是唯链应用</h2>
+          <h4 class="fragment fade-in">这是一个相对狭义的概念</h4>
+          <h4 class="fragment fade-in">WEB Application</h4>
+          <h4 class="fragment fade-in">用户以私钥为身份</h4>
+          <h4 class="fragment fade-in">从区块链获取数据</h4>
+          <h4 class="fragment fade-in">与区块链契合</h4>
+        </section>
+        <section data-markdown id="vechain-apps">
+          <textarea data-template>
+            ## 唯链小程序们（不完全列表）
+
+            + Connex文档 - https://connex.vecha.in/
+            + Insight - https://insight.vecha.in/
+            + Inspector - https://inspector.vecha.in/
+            + EnergyStation - https://energy.outofgas.io/ (求赞助)
+            + TokenTransfer - [唯链代币转账神器](https://laalaguer.github.io/vechain-token-transfer/)
+            + Faucet - https://faucet.vecha.in/ (即将上线)
+            + Connex Implementation Test - [这又是一个标准](https://connex-impl-test.vecha.in/)
+            + Connex-Intro - [也就是本应用](https://libotony.github.io/connex-intro/)
+          </textarea>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <textarea data-template>
+            ## 一图胜千言
+
+            ![connex-and-web-container](<%= BASE_URL %>img/connex.png)
+          </textarea>
         </section>
         <section>
-          <h2>It is</h2>
+          <h2 id="connex-overview">Connex Overview</h2>
+          <ul>
+            <li class="fragment fade-in" data-fragment-index="1"><strong>Connex.Thor</strong> - 从区块链读的
+              <ul class="fragment fade-in" data-fragment-index="3">
+                <li>Genesis</li>
+                <li>Status</li>
+                <li>Account &amp; Block &amp; Transaction &amp; Filter</li>
+                <li><span class="fragment highlight-green" data-fragment-index="5">Ticker</span></li>
+                <li><span class="fragment highlight-green" data-fragment-index="5">Explain</span></li>
+              </ul>
+            </li>
+            <li class="fragment fade-in" data-fragment-index="2"><span class="fragment highlight-green"
+                data-fragment-index="5"><strong>Connex.Vendor</strong></span>- 向区块链写的
+              <ul class="fragment fade-in" data-fragment-index="4">
+                <li>TX</li>
+                <li>CERT</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Ticker</h2>
+          <h4 class="fragment fade-in">心跳</h4>
+          <h4 class="fragment fade-in">晶振</h4>
+          <h4 class="fragment fade-in">历史的车轮</h4>
+          <h4 class="fragment fade-in">方便开发者</h4>
         </section>
         <section data-markdown>
           <textarea data-template>
-              ## Title
-            
-              + Info
+            ## 先看一眼怎么用
 
-              ``` JavaScript
-              const one = 1
-              ```
-            </textarea>
+            <br/>
+            ``` javascript
+              const ticker = connex.thor.ticker()
+              ticker.next().then(()=>{
+                console.log('区块链有异动 👀')
+              })
+            ```
+            <br/>
+            
+            + 有了异动我们就可以监视区块链了
+            + 基于这个我们可以做一个Insight
+          </textarea>
         </section>
-      </div>
+        <section id="ticker-app">
+          <h2>10分钟实现 Insight</h2>
+          <div id="ticker" style="width:80%; margin: auto" v-cloak>
+            <hr />
+            <div class="grid">
+              <div class="cell -4of12 row-name">
+                <p>Number:</p>
+              </div>
+              <div class="cell -8of12 row-value">
+                <p>{{number}}</p>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="cell -4of12 row-name">
+                <p>Time:</p>
+              </div>
+              <div class="cell -8of12 row-value">
+                <p>{{time}}</p>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="cell -4of12 row-name">
+                <p>TotalScore:</p>
+              </div>
+              <div class="cell -8of12 row-value">
+                <p>{{animatedScore}}</p>
+              </div>
+            </div>
+            <hr />
+            <button class="btn btn-primary  btn-ghost btn-block" @click="buttonAction">{{buttonText}} Tick-Tock</button>
+            <div>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ## 再看一眼代码
+
+            ``` javascript
+              const EventBus = new EventTarget()
+              const tickEvent = new Event('tick');
+
+              ;(async () => {
+              const ticker = connex.thor.ticker()
+              for (; ;){
+                await ticker.next()
+                EventBus.dispatchEvent(tickEvent)
+              }
+              })().catch(e => {
+                console.log('ticker loop error', e)
+              })
+
+              const tickerAction = () => {
+                connex.thor.block().get().then(blk => {
+                  // 拿到blk可以更新UI了
+                }).catch(e => {
+                  // 把错误输出到console也是错误处理:)
+                  console.log(e)
+                })
+              }
+
+              EventBus.addEventListener(tickEvent.type, tickerAction)
+            ```
+
+          </textarea>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <textarea data-template>
+            ## 听说唯链要有开发者大会了
+
+            + 那么票是如何买的呢
+            + 肯定是VET购买咯
+            + 需要做一个买票的应用
+            + 用connex很方便就可以实现
+            + 定价10W VET妥妥的
+
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ## 先看一眼怎么用
+
+            <br/>
+            ``` javascript
+              const signingService = connex.vendor.sign('tx')
+              signingService
+                .comment('Pay 100,000 VET to buy a ticket')
+
+              signingService.request([{
+                to: '0x7567d83b7b8d80addcb281a71d54fc7b3364ffed',
+                value: '10000000000000000000',
+                data: '0x',
+                comment: 'Transfer 100,000 VET'
+              }]).then(result => {
+                // 成功了 更新UI
+                // result: {signer: ..., signature: ...}
+              }).catch(e => {
+                // 失败了 更新UI
+                console.log('mini-ticket-action', e)
+              })
+            ```
+            <br/>
+
+          </textarea>
+        </section>
+        <section id="mini-ticket-app">
+          <div id="mini-ticket" style="width:80%; margin: auto" v-cloak>
+            <h2>VeChain Summit 2019</h2>
+            <p>这里仿佛有一些介绍</p>
+            <p>中心思想是错过悔一生</p>
+            <button class="btn btn-primary" @click="buttonAction">100,000 VET 买买买</button>
+            <hr />
+            <div class="grid">
+              <div class="cell -1of12 row-name"></div>
+              <div class="cell -2of12 row-name">
+                <p>Message:</p>
+              </div>
+              <div class="cell -9of12 row-value">
+                <p>{{msg}}</p>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="cell -1of12 row-name"></div>
+              <div class="cell -2of12 row-name">
+                <p>TXID:</p>
+              </div>
+              <div class="cell -9of12 row-value">
+                <p>{{txid}}</p>
+              </div>
+            </div>
+            <hr />
+          </div>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <textarea data-template>
+            ## 这就结束了？
+
+            + 这是一个面向全社区的活动
+            + 仿佛可以给X-NODE一点优惠呢
+            + 那么我可以演示更多的知识点了
+            + 那就给X-NODE打个折吧
+
+          </textarea>
+        </section>
+        <section id="full-ticket-app">
+          <div id="full-ticket" style="width:80%; margin: auto" v-cloak>
+            <h2>VeChain Summit 2019</h2>
+            <p>这里仿佛有一些介绍</p>
+            <p>中心思想是错过悔一生</p>
+            <div class="loading"></div>
+
+            <button class="btn btn-primary" @click="identAction">告诉我你是谁</button>
+            <button class="btn btn-primary" @click="buttonAction" :disabled="addr == '-'">{{isXNode?'80,000':'100,000'}}
+              VET
+              买买买</button>
+            <hr />
+            <div class="grid">
+              <div class="cell -1of12 row-name"></div>
+              <div class="cell -2of12 row-name">
+                <p>Identity:</p>
+              </div>
+              <div class="cell -9of12 row-value">
+                <p>{{addr}}</p>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="cell -1of12 row-name"></div>
+              <div class="cell -2of12 row-name">
+                <p>X-NODE:</p>
+              </div>
+              <div class="cell -9of12 row-value">
+                <p>{{isXNode ? '是' : '否'}}</p>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="cell -1of12 row-name"></div>
+              <div class="cell -2of12 row-name">
+                <p>Message:</p>
+              </div>
+              <div class="cell -9of12 row-value">
+                <p>{{msg}}</p>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="cell -1of12 row-name"></div>
+              <div class="cell -2of12 row-name">
+                <p>TXID:</p>
+              </div>
+              <div class="cell -9of12 row-value">
+                <p>{{txid}}</p>
+              </div>
+            </div>
+            <hr />
+          </div>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ## 让用户告诉你他的身份
+            
+            这里有个知识点: CERT
+            ``` javascript
+            const signingService = connex.vendor.sign('cert')
+
+            await signingService.request({
+              purpose: 'identification',
+              payload: {
+                type: 'text',
+                content: 'Connex Intro is requesting your identification'
+              }
+            }).then(result => {
+              // 成功了 更新UI
+              // result: {annex: {signer: ..., ...} signature: ...}
+            }).catch(e => {
+              // 失败了 更新UI
+              console.log('full-ticket-identity', e)
+            })
+            ```
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ## 如何查询用户是否为X节点
+            
+            这里有个知识点: 调用合约
+            ``` javascript
+            // solidity: function isX(address _target) public view returns(bool)
+            const isXABI = {}
+            const isX = connex.thor.account('0xd4dac3a95c741773F093d59256A21ED6FCc768a7').method(isXABI)
+            isX
+              .call(userAddress) // isX(userAddress)
+              .then(ret=>{
+                // 更新UI
+                // ret: {decoded: {0: true/false, ...}, ...}
+              }).catch(e=>{
+                console.log('Get x-node status failed', e)
+              })
+            ```
+          </textarea>
+        </section>
+        <section data-markdown>
+          <textarea data-template>
+            ## 还有最后一个知识点
+            
+            <br/>
+            ``` javascript
+            const signingService = connex.vendor.sign('tx')
+            signingService
+              .signer(userAddress) // 强制用户地址来签名
+              .comment('Pay 100,000 VET to buy a ticket')
+            ```
+            <br />
+            + 仅做演示，实际并不安全
+          </textarea>
+        </section>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+
+          + 演示代码都是POC
+          + 仅演示了Connex的部分功能
+          + 我们GitHub见
+          + 欢迎Issue 和 PR 以及 当面交流
+          + 开发者可以带来无限的可能
+
+        </textarea>
+      </section>
+      <section>
+        <p>关于Connex我想说</p>
+        <p><img  style="width:50%" src="/img/panta.jpg" alt="panta"></p>
+      </section>
+      <section>
+        <h1>谢谢！</h1>
+      </section>
     </div>
-    <!-- built files will be auto injected -->
-  </body>
+  </div>
+  <!-- built files will be auto injected -->
+</body>
+
 </html>

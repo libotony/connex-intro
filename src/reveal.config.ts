@@ -11,8 +11,10 @@ import 'reveal.js/lib/css/zenburn.css'
 
 // Printing and PDF exports
 if (window.location.search.match(/print-pdf/gi)) {
+    // tslint:disable-next-line:no-var-requires
     require('reveal.js/css/print/pdf.css')
 } else {
+    // tslint:disable-next-line:no-var-requires
     require('reveal.js/css/print/paper.css')
 }
 
