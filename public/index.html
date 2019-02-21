@@ -8,6 +8,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>favicon-32x32.png">
   <title>Develop VeChain APPs with Connex</title>
   <link rel="stylesheet" href="<%= BASE_URL %>css/hack.css">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? '<%= BASE_URL %>css/print/pdf.css' : '<%= BASE_URL %>css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
 </head>
 
 <body>
